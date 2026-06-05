@@ -19,8 +19,8 @@ The API documentation and testing interface (Swagger) will be available at:
 ### To run the application directly from your IDE:
 
 * Open the solution folder in Visual Studio.
-* python -m pip install -r requirements.txt
-* uvicorn scripts.main:app --host 0.0.0.0 --port 8000
+### python -m pip install -r requirements.txt
+### uvicorn scripts.main:app --host 0.0.0.0 --port 8000
 
 The API documentation and testing interface (Swagger) will be available at:
 👉 [http://127.0.0.1:8000/doc]
