@@ -4,8 +4,8 @@
 ## Running with Docker
 To spin up the entire environment (including the API and required infrastructure) using containers, execute the following command in the project's root directory:
 
-bash
-
+### Run Docekr desktop  
+### docker compose down -v 
 ### docker compose up --build
 
 This command automatically builds the necessary images and starts the defined services.
@@ -25,12 +25,20 @@ The API documentation and testing interface (Swagger) will be available at:
 The API documentation and testing interface (Swagger) will be available at:
 👉 [http://127.0.0.1:8000/doc]
 
+# Database
+Is automated
+
+# API KEY
+For two client key is generated as gui string and saved in table clients
+
+
+# Json example for test
 
 {
-  "username": "epi",
-  "full_name": "Nenad Jesic",
-  "email": "nenad@example.com",
-  "mobile_number": "123 123",
+  "username": "test",
+  "full_name": "Test Tester",
+  "email": "test@example.com",
+  "mobile_number": "01 123 123",
   "language": "slo",
   "culture": "si",
   "password": "1234rewq"
