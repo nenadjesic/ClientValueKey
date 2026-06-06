@@ -23,7 +23,7 @@ The API documentation and testing interface (Swagger) will be available at:
 ### uvicorn scripts.main:app --host 0.0.0.0 --port 8000
 
 The API documentation and testing interface (Swagger) will be available at:
-👉 [http://127.0.0.1:8000/doc]
+👉 [http://127.0.0.1:8000/docs]
 
 # Database
 Is automated
