@@ -8,7 +8,6 @@ services:
     ports:
       - "8001:8000" 
     environment:
-      # Application connects to 'db-mysql' service on port 3306 using 'dbtest' database
       - DATABASE_URL=mysql+pymysql://root:1234#ReWq@db-mysql:3306/dbtest
     depends_on:
       db-mysql:
@@ -21,9 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: "1234#ReWq"
       MYSQL_DATABASE: "dbtest"
     ports:
-      - "3307:3306" # External port 3307 for host machine, internal port 3306 for containers
+      - "3307:3306"
     healthcheck:
-      # Pings the MySQL server locally using root credentials to verify readiness
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-p1234#ReWq"]
       interval: 5s
       timeout: 5s

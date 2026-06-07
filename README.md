@@ -1,39 +1,55 @@
-# Solution Webservice for managing a repository of users and their passwords
-
+# Webservice for Managing a User and Password Repository
 
 ## Running with Docker
-To spin up the entire environment (including the API and required infrastructure) using containers, execute the following command in the project's root directory:
+To spin up the entire environment (including the API and the required infrastructure) using containers, execute the following commands in the project's root directory:
 
-### Run Docekr desktop  
-### docker compose down -v 
-### docker compose up --build
+1. Open **Docker Desktop** and ensure it is running.
+2. Stop and clear any existing containers and volumes:
+   ```bash
+   docker compose down -v
+   ```
+3. Build the necessary images and start the services:
+   ```bash
+   docker compose up --build
+   ```
 
-This command automatically builds the necessary images and starts the defined services.
+The API documentation and interactive testing interface (Swagger) will be available at:
+👉 http://127.0.0.1:8001/docs
 
-The API documentation and testing interface (Swagger) will be available at: 
-👉 [http://127.0.0.1:8001/docs]
-
+---
 
 ## Local Development (Visual Studio)
-   
-### To run the application directly from your IDE:
+To run the application directly from your IDE or local environment:
 
-* Open the solution folder in Visual Studio.
-### python -m pip install -r requirements.txt
-### uvicorn scripts.main:app --host 0.0.0.0 --port 8000
+1. Open the solution folder in Visual Studio.
+2. Install the required dependencies:
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+3. Start the application using Uvicorn:
+   ```bash
+   uvicorn scripts.main:app --host 0.0.0.0 --port 8000
+   ```
 
-The API documentation and testing interface (Swagger) will be available at:
-👉 [http://127.0.0.1:8000/docs]
+The API documentation and interactive testing interface (Swagger) will be available at:
+👉 http://127.0.0.0:8000/docs
 
-# Database
-Is automated
+---
 
-# API KEY
-For two client key is generated as gui string and saved in table clients
+## Database
+The database setup and initialization are fully automated.
 
+---
 
-# Json example for test
+## API Authentication
+API keys for the two clients are generated as GUID strings and securely saved in the `clients` table.
 
+---
+
+## JSON Test Example
+Use the following payload structure to test the user registration endpoint:
+
+```json
 {
   "username": "test",
   "full_name": "Test Tester",
@@ -43,5 +59,4 @@ For two client key is generated as gui string and saved in table clients
   "culture": "si",
   "password": "1234rewq"
 }
-
-
+```

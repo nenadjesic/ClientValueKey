@@ -79,12 +79,12 @@ async def custom_swagger_ui_html():
 
 @app.post("/users", status_code=201, dependencies=[Depends(verify_api_key_and_log)])
 def create_user(user_data: UserCreate, request: Request, db: Session = Depends(get_db)):
-    # 1. Existing check for Username duplication
+    
     if db.query(UserModel).filter(UserModel.username == user_data.username).first():
         logger.error(f"{request.state.log_base} | Message: Username already exists.")
         raise HTTPException(status_code=400, detail="Username is already taken.")
 
-    # 2. ADDED: Check for Email duplication
+    
     if db.query(UserModel).filter(UserModel.email == user_data.email).first():
         logger.error(f"{request.state.log_base} | Message: Email already exists.")
         raise HTTPException(status_code=400, detail="Email is already registered.")
@@ -126,7 +126,6 @@ def update_user(user_id: str, update_data: UserUpdate, request: Request, db: Ses
         logger.error(f"{request.state.log_base} | Message: User for update not found.")
         raise HTTPException(status_code=404, detail="User not found.")
     
-    # 3. ADDED: If email is being updated, verify it does not conflict with another user
     if update_data.email and update_data.email != user.email:
         if db.query(UserModel).filter(UserModel.email == update_data.email).first():
             logger.error(f"{request.state.log_base} | Message: Update failed. Email already exists.")
